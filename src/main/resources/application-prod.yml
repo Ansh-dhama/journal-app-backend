@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: springboot
+  data:
+    mongodb:
+      uri: "mongodb+srv://dhamaansh19_db_user:TestUser12345@cluster0.lycw5k9.mongodb.net/practice_db?appName=Cluster0"
+      auto-index-creation: true
+
+server:
+  port: 8085

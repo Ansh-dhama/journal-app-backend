@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: dev
+
+
+logging:
+  level:
+    practicespringboot:
+      dhama:
+        springboot: error
+

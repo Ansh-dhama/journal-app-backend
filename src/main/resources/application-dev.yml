@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: springboot
+
+  data:
+    redis:
+      host: redis-14497.c266.us-east-1-3.ec2.cloud.redislabs.com
+      port: 14497
+      username: default
+      password: ESnmroEjkmhdDmKfU44msH6JsXnZSJxR
+
+    mongodb:
+      uri: "mongodb+srv://dhamaansh19_db_user:TestUser12345@cluster0.lycw5k9.mongodb.net/journaldb?appName=Cluster0"
+      auto-index-creation: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: dhamaansh19@gmail.com
+    password: fkqi slrm ceje gdgt
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8085
+app:
+  jwtSecret: ${JWT_SECRET:TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$V_THIS_SHOULD_BE_KEPT_SECRET}
+  weather-api-key: ${WEATHER_API_KEY:cce62c15cb2749d89ae75942252312}
+  urls:
+    weather-api: "https://api.weatherapi.com/v1"
+    # Assuming you use IPGeolocation for time, based on your previous code
+    datetime-api: "https://api.ipgeolocation.io/timezone"
