@@ -1,23 +1,27 @@
 spring:
   application:
-    name: springboot
+    name: journal-app
 
   data:
     redis:
-      host: redis-14497.c266.us-east-1-3.ec2.cloud.redislabs.com
-      port: 14497
-      username: default
-      password: ESnmroEjkmhdDmKfU44msH6JsXnZSJxR
+      # Defaults to your cloud host, but allows override
+      host: ${REDIS_HOST:redis-14497.c266.us-east-1-3.ec2.cloud.redislabs.com}
+      port: ${REDIS_PORT:14497}
+      username: ${REDIS_USERNAME:default}
+      # 🔒 SECURE: Reads from env var REDIS_PASSWORD
+      password: ${REDIS_PASSWORD}
 
     mongodb:
-      uri: "mongodb+srv://dhamaansh19_db_user:TestUser12345@cluster0.lycw5k9.mongodb.net/journaldb?appName=Cluster0"
+      # 🔒 SECURE: Reads from env var MONGO_URI
+      uri: ${MONGO_URI}
       auto-index-creation: true
 
   mail:
     host: smtp.gmail.com
     port: 587
-    username: dhamaansh19@gmail.com
-    password: fkqi slrm ceje gdgt
+    username: ${MAIL_USERNAME:dhamaansh19@gmail.com}
+    # 🔒 SECURE: Reads from env var MAIL_PASSWORD
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -26,11 +30,14 @@ spring:
             enable: true
 
 server:
-  port: 8085
+  port: ${SERVER_PORT:8085}
+
 app:
-  jwtSecret: ${JWT_SECRET:TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$V_THIS_SHOULD_BE_KEPT_SECRET}
-  weather-api-key: ${WEATHER_API_KEY:cce62c15cb2749d89ae75942252312}
+  # 🔒 SECURE: Reads from env var JWT_SECRET
+  jwtSecret: ${JWT_SECRET}
+  # 🔒 SECURE: Reads from env var WEATHER_API_KEY
+  weather-api-key: ${WEATHER_API_KEY}
+  
   urls:
     weather-api: "https://api.weatherapi.com/v1"
-    # Assuming you use IPGeolocation for time, based on your previous code
     datetime-api: "https://api.ipgeolocation.io/timezone"
